@@ -1,3 +1,9 @@
+import Manager.Manager;
+import Tasks.Epic;
+import Tasks.Status;
+import Tasks.Subtask;
+import Tasks.Task;
+
 import java.util.List;
 
 
@@ -9,8 +15,8 @@ public class Main {
 
         System.out.println("~~ Задача ~~");
         System.out.println("--- Создайте задачу ---");
-        manager.createTask(new Task("Описание-1", "Task-1", Status.NEW));
-        manager.createTask(new Task("Описание-2", "Task-2", Status.NEW));
+        manager.createTask(new Task("Описание-1", "Tasks.Task-1", Status.NEW));
+        manager.createTask(new Task("Описание-2", "Tasks.Task-2", Status.NEW));
         printTasks();
         System.out.println("--- Получите все задачи---");
         List<Task> taskList = manager.getAllTasks();
@@ -24,10 +30,10 @@ public class Main {
         System.out.println(task);
         System.out.println();
 
-        System.out.println("!!! Epic !!!");
+        System.out.println("!!! Tasks.Epic !!!");
         System.out.println("--- Создать эпик ---");
-        manager.createEpic(new Epic("Описание-1", "Epic-1", Status.NEW));
-        manager.createEpic(new Epic("Описание-2", "Epic-2", Status.NEW));
+        manager.createEpic(new Epic("Описание-1", "Tasks.Epic-1", Status.NEW));
+        manager.createEpic(new Epic("Описание-2", "Tasks.Epic-2", Status.NEW));
         printEpics();
         System.out.println("--- Получить все эпики --");
         List<Epic> epics = manager.getAllEpics();
@@ -43,10 +49,10 @@ public class Main {
 
         System.out.println(">>> Подзадача ");
         System.out.println("--- Создать подзадачу ---");
-        manager.createSubtask(new Subtask("Описание-1", "Subtask-1", Status.NEW, 3));
-        manager.createSubtask(new Subtask("Описание-2", "Subtask-2", Status.NEW, 3));
-        manager.createSubtask(new Subtask("Описание-3", "Subtask-3", Status.NEW, 4));
-        manager.createSubtask(new Subtask("Описание-4", "Subtask-4", Status.NEW, 4));
+        manager.createSubtask(new Subtask("Описание-1", "Tasks.Subtask-1", Status.NEW, 3));
+        manager.createSubtask(new Subtask("Описание-2", "Tasks.Subtask-2", Status.NEW, 3));
+        manager.createSubtask(new Subtask("Описание-3", "Tasks.Subtask-3", Status.NEW, 4));
+        manager.createSubtask(new Subtask("Описание-4", "Tasks.Subtask-4", Status.NEW, 4));
         printSubtasks();
         System.out.println("--- Получить все подзадачи по id эпика  ---");
         List<Subtask> subtasksByEpicId = manager.getAllSubtasksByEpicId(3);
@@ -88,11 +94,11 @@ public class Main {
 
     public static void printTasks() {
         if (manager.tasks.size() == 0) {
-            System.out.println("Task list is empty");
+            System.out.println("Tasks.Task list is empty");
             return;
         }
         for (Task task : manager.tasks.values()) {
-            System.out.println("Task{" +
+            System.out.println("Tasks.Task{" +
                     "description='" + task.getDescription() + '\'' +
                     ", id=" + task.getId() +
                     ", name='" + task.getName() + '\'' +
@@ -103,11 +109,11 @@ public class Main {
 
     public static void printEpics() {
         if (manager.epics.size() == 0) {
-            System.out.println("Epic list is empty");
+            System.out.println("Tasks.Epic list is empty");
             return;
         }
         for (Epic epic : manager.epics.values()) {
-            System.out.println("Epic{" +
+            System.out.println("Tasks.Epic{" +
                     "subtasksIds=" + epic.getSubtaskIds() +
                     ", description='" + epic.getDescription() + '\'' +
                     ", id=" + epic.getId() +
@@ -119,11 +125,11 @@ public class Main {
 
     public static void printSubtasks() {
         if (manager.subtasks.size() == 0) {
-            System.out.println("Subtask list is empty");
+            System.out.println("Tasks.Subtask list is empty");
             return;
         }
         for (Subtask subtask : manager.subtasks.values()) {
-            System.out.println("Subtask{" +
+            System.out.println("Tasks.Subtask{" +
                     "epicId=" + subtask.getEpicId() +
                     ", description='" + subtask.getDescription() + '\'' +
                     ", id=" + subtask.getId() +

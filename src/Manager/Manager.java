@@ -1,3 +1,10 @@
+package Manager;
+
+import Tasks.Epic;
+import Tasks.Status;
+import Tasks.Subtask;
+import Tasks.Task;
+
 import java.util.*;
 
 public class Manager {
@@ -35,7 +42,7 @@ public class Manager {
             updateStatusEpic(epic);
             return newSubtaskId;
         } else {
-            System.out.println("Epic not found");
+            System.out.println("Tasks.Epic not found");
             return -1;
         }
     }
@@ -44,7 +51,7 @@ public class Manager {
         if (tasks.containsKey(id)) {
             tasks.remove(id);
         } else {
-            System.out.println("Task not found");
+            System.out.println("Tasks.Task not found");
         }
     }
 
@@ -56,7 +63,7 @@ public class Manager {
             }
             epics.remove(id);
         } else {
-            System.out.println("Epic not found");
+            System.out.println("Tasks.Epic not found");
         }
     }
 
@@ -68,7 +75,7 @@ public class Manager {
             updateStatusEpic(epic);
             subtasks.remove(id);
         } else {
-            System.out.println("Subtask not found");
+            System.out.println("Tasks.Subtask not found");
         }
     }
 
@@ -103,7 +110,7 @@ public class Manager {
 
     public List<Task> getAllTasks() {
         if (tasks.size() == 0) {
-            System.out.println("Task list is empty");
+            System.out.println("Tasks.Task list is empty");
             return Collections.emptyList();
         }
         return new ArrayList<>(tasks.values());
@@ -111,7 +118,7 @@ public class Manager {
 
     public List<Epic> getAllEpics() {
         if (epics.size() == 0) {
-            System.out.println("Epic list is empty");
+            System.out.println("Tasks.Epic list is empty");
             return Collections.emptyList();
         }
         return new ArrayList<>(epics.values());
@@ -142,7 +149,7 @@ public class Manager {
         if (tasks.containsKey(task.getId())) {
             tasks.put(task.getId(), task);
         } else {
-            System.out.println("Task not found");
+            System.out.println("Tasks.Task not found");
         }
     }
 
@@ -151,7 +158,7 @@ public class Manager {
             epics.put(epic.getId(), epic);
             updateStatusEpic(epic);
         } else {
-            System.out.println("Epic not found");
+            System.out.println("Tasks.Epic not found");
         }
     }
 
@@ -167,8 +174,25 @@ public class Manager {
                 for (int i = 0; i < epic.getSubtaskIds().size(); i++) {
                     subtasksNew.add(subtasks.get(epic.getSubtaskIds().get(i)));
                 }
-
                 for (Subtask subtask : subtasksNew) {
+
+                    switch (subtask.getStatus()) {
+                        case DONE:
+                            countDone++;
+                            break;
+
+                        case NEW:
+                            countNew++;
+
+                            break;
+
+                        case IN_PROGRESS:
+
+                            epic.setStatus(Status.IN_PROGRESS);
+                            return;
+                    }
+                }
+                /*for (Subtask subtask : subtasksNew) {
                     if (subtask.getStatus() == Status.DONE) {
                         countDone++;
                     }
@@ -179,7 +203,7 @@ public class Manager {
                         epic.setStatus(Status.IN_PROGRESS);
                         return;
                     }
-                }
+                } */
 
                 if (countDone == epic.getSubtaskIds().size()) {
                     epic.setStatus(Status.DONE);
@@ -190,7 +214,7 @@ public class Manager {
                 }
             }
         } else {
-            System.out.println("Epic not found");
+            System.out.println("Tasks.Epic not found");
         }
     }
 
@@ -200,7 +224,7 @@ public class Manager {
             Epic epic = epics.get(subtask.getEpicId());
             updateStatusEpic(epic);
         } else {
-            System.out.println("Subtask not found");
+            System.out.println("Tasks.Subtask not found");
         }
     }
 }
