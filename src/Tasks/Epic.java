@@ -5,15 +5,16 @@ import java.util.*;
 public class Epic extends Task {
     private final List<Integer> subtaskIds = new ArrayList<>();
 
-    public Epic(String description, String name, Status status) {
-        super(description, name, status);
+    public Epic(String description, String name) {
+
+        super(description, name, Status.NEW);
     }
 
     public List<Integer> getSubtaskIds() {
         return subtaskIds;
     }
 
-    public void setSubtaskIds(int id) {
+    public void addSubtaskIds(int id) {
         subtaskIds.add(id);
     }
 

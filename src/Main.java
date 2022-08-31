@@ -32,8 +32,8 @@ public class Main {
 
         System.out.println("!!! Tasks.Epic !!!");
         System.out.println("--- Создать эпик ---");
-        manager.createEpic(new Epic("Описание-1", "Tasks.Epic-1", Status.NEW));
-        manager.createEpic(new Epic("Описание-2", "Tasks.Epic-2", Status.NEW));
+        manager.createEpic(new Epic("Описание-1", "Tasks.Epic-1"));
+        manager.createEpic(new Epic("Описание-2", "Tasks.Epic-2" ));
         printEpics();
         System.out.println("--- Получить все эпики --");
         List<Epic> epics = manager.getAllEpics();
@@ -93,11 +93,11 @@ public class Main {
     }
 
     public static void printTasks() {
-        if (manager.tasks.size() == 0) {
+        if (manager.getTasks().size() == 0) {
             System.out.println("Tasks.Task list is empty");
             return;
         }
-        for (Task task : manager.tasks.values()) {
+        for (Task task : manager.getTasks().values()) {
             System.out.println("Tasks.Task{" +
                     "description='" + task.getDescription() + '\'' +
                     ", id=" + task.getId() +
@@ -108,11 +108,11 @@ public class Main {
     }
 
     public static void printEpics() {
-        if (manager.epics.size() == 0) {
+        if (manager.getEpics().size() == 0) {
             System.out.println("Tasks.Epic list is empty");
             return;
         }
-        for (Epic epic : manager.epics.values()) {
+        for (Epic epic : manager.getEpics().values()) {
             System.out.println("Tasks.Epic{" +
                     "subtasksIds=" + epic.getSubtaskIds() +
                     ", description='" + epic.getDescription() + '\'' +
@@ -124,11 +124,11 @@ public class Main {
     }
 
     public static void printSubtasks() {
-        if (manager.subtasks.size() == 0) {
+        if (manager.getSubtasks().size() == 0) {
             System.out.println("Tasks.Subtask list is empty");
             return;
         }
-        for (Subtask subtask : manager.subtasks.values()) {
+        for (Subtask subtask : manager.getSubtasks().values()) {
             System.out.println("Tasks.Subtask{" +
                     "epicId=" + subtask.getEpicId() +
                     ", description='" + subtask.getDescription() + '\'' +
