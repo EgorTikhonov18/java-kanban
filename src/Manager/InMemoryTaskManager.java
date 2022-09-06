@@ -7,31 +7,40 @@ import Tasks.Task;
 
 import java.util.*;
 
-public class Manager {
+public class InMemoryTaskManager implements TaskManager{
     private  int id = 0;
 
     private Map<Integer, Task> tasks = new HashMap<>();
     private HashMap<Integer, Subtask> subtasks = new HashMap<>(); // тут наверное тоже надо private
-    private HashMap<Integer, Epic> epics = new HashMap<>(); // тут наверное тоже надо private
+    private HashMap<Integer, Epic> epics = new HashMap<>();
 
+    public HistoryManager historyManager = Managers.getDefaultHistory();
+
+    // тут наверное тоже надо private
+    @Override
+    public List<Task> getHistory() {
+        return historyManager.getHistory();
+    }
+    @Override
     public int generateId() {
         return ++id;
     }
 
+    @Override
     public int createTask(Task task) {
         int newTaskId = generateId();
         task.setId(newTaskId);
         tasks.put(newTaskId, task);
         return newTaskId;
     }
-
+    @Override
     public int createEpic(Epic epic) {
         int newEpicId = generateId();
         epic.setId(newEpicId);
         epics.put(newEpicId, epic);
         return newEpicId;
     }
-
+    @Override
     public int createSubtask(Subtask subtask) {
         int newSubtaskId = generateId();
         subtask.setId(newSubtaskId);
@@ -46,7 +55,7 @@ public class Manager {
             return -1;
         }
     }
-
+    @Override
     public void deleteTaskById(int id) {
         if (tasks.containsKey(id)) {
             tasks.remove(id);
@@ -54,7 +63,7 @@ public class Manager {
             System.out.println("Tasks.Task not found");
         }
     }
-
+    @Override
     public void deleteEpicById(int id) {
         Epic epic = epics.get(id);
         if (epic != null) {
@@ -66,7 +75,7 @@ public class Manager {
             System.out.println("Tasks.Epic not found");
         }
     }
-
+    @Override
     public void deleteSubtaskById(int id) {
         Subtask subtask = subtasks.get(id);
         if (subtask != null) {
@@ -78,16 +87,16 @@ public class Manager {
             System.out.println("Tasks.Subtask not found");
         }
     }
-
+    @Override
     public void deleteAllTasks() {
         tasks.clear();
     }
-
+    @Override
     public void deleteAllEpics() {
         subtasks.clear();
         epics.clear();
     }
-
+    @Override
     public void deleteAllSubtasks() {
         subtasks.clear();
         for (Epic epic : epics.values()) {
@@ -95,19 +104,19 @@ public class Manager {
             updateStatusEpic(epic);
         }
     }
-
+    @Override
     public Task getTaskById(int id) {
         return tasks.get(id);
     }
-
+    @Override
     public Epic getEpicById(int id) {
         return epics.get(id);
     }
-
+    @Override
     public Subtask getSubtaskById(int id) {
         return subtasks.get(id);
     }
-
+    @Override
     public List<Task> getAllTasks() {
         if (tasks.size() == 0) {
             System.out.println("Tasks.Task list is empty");
@@ -115,7 +124,7 @@ public class Manager {
         }
         return new ArrayList<>(tasks.values());
     }
-
+    @Override
     public List<Epic> getAllEpics() {
         if (epics.size() == 0) {
             System.out.println("Tasks.Epic list is empty");
@@ -123,7 +132,7 @@ public class Manager {
         }
         return new ArrayList<>(epics.values());
     }
-
+    @Override
     public List<Subtask> getAllSubtasks() {
         if (subtasks.size() == 0) {
             System.out.println("Subtasks list is empty");
@@ -131,7 +140,7 @@ public class Manager {
         }
         return new ArrayList<>(subtasks.values());
     }
-
+    @Override
     public List<Subtask> getAllSubtasksByEpicId(int id) {
         if (epics.containsKey(id)) {
             List<Subtask> subtasksNew = new ArrayList<>();
@@ -144,7 +153,7 @@ public class Manager {
             return Collections.emptyList();
         }
     }
-
+    @Override
     public void updateTask(Task task) {
         if (tasks.containsKey(task.getId())) {
             tasks.put(task.getId(), task);
@@ -152,7 +161,7 @@ public class Manager {
             System.out.println("Tasks.Task not found");
         }
     }
-
+    @Override
     public void updateEpic(Epic epic) {
         if (epics.containsKey(epic.getId())) {
             epics.put(epic.getId(), epic);
@@ -161,7 +170,7 @@ public class Manager {
             System.out.println("Tasks.Epic not found");
         }
     }
-
+    @Override
     public void updateStatusEpic(Epic epic) {
         if (epics.containsKey(epic.getId())) {
             if ( epic.getSubtaskIds().isEmpty()) {
@@ -204,7 +213,7 @@ public class Manager {
             System.out.println("Tasks.Epic not found");
         }
     }
-
+    @Override
     public void updateSubtask(Subtask subtask) {
         if (subtasks.containsKey(subtask.getId())) {
             subtasks.put(subtask.getId(), subtask);
@@ -214,29 +223,28 @@ public class Manager {
             System.out.println("Tasks.Subtask not found");
         }
     }
-
+    @Override
     public Map<Integer, Task> getTasks() {
         return tasks;
     }
-
+    @Override
     public void setTasks(Map<Integer, Task> tasks) {
         this.tasks = tasks;
     }
-
+    @Override
     public HashMap<Integer, Subtask> getSubtasks() {
         return subtasks;
     }
-
+    @Override
     public void setSubtasks(HashMap<Integer, Subtask> subtasks) {
         this.subtasks = subtasks;
     }
-
+   @Override
     public HashMap<Integer, Epic> getEpics() {
         return epics;
     }
-
+    @Override
     public void setEpics(HashMap<Integer, Epic> epics) {
         this.epics = epics;
     }
 }
-

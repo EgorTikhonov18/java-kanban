@@ -1,7 +1,9 @@
 package Tasks;
 
 public enum Status {
-    NEW("new"), IN_PROGRESS("inProgress"), DONE("done");
+    NEW("new"),
+    IN_PROGRESS("inProgress"),
+    DONE("done");
     private String translation;
 
 
