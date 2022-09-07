@@ -1,7 +1,10 @@
 package Manager;
-import Tasks.Task ;
+
+import Tasks.Task;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class InMemoryHistoryManager implements HistoryManager {
 
     private final static int LIST_SIZE = 10;
@@ -23,4 +26,3 @@ public class InMemoryHistoryManager implements HistoryManager {
         return listHistory;
     }
 }
-
