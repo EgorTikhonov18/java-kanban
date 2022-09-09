@@ -1,8 +1,6 @@
 package Tasks;
 
 
-
-
 import java.util.Objects;
 
 public class Task {
@@ -33,11 +31,11 @@ public class Task {
         this.name = name;
     }
 
-    public  Status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus( Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

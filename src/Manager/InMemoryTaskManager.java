@@ -5,6 +5,7 @@ import Tasks.Task;
 import Tasks.sub.Epic;
 import Tasks.sub.SubTask;
 import Tasks.Status;
+
 import java.util.*;
 
 public class InMemoryTaskManager implements TaskManager {
@@ -14,12 +15,12 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, SubTask> subTasks = new HashMap<>();
-    private int i = 0;
+    private int id = 0;
 
 
     @Override
     public void createTask(Task task) {
-        task.setId(newId());
+        task.setId(++id);
         tasks.put(task.getId(), task);
     }
 
@@ -59,7 +60,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void createEpic(Epic epic) {
-        epic.setId(newId());
+        epic.setId(++id);
         epics.put(epic.getId(), epic);
     }
 
@@ -70,7 +71,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void addSubTask(SubTask subTask) {
-        int subTaskId = this.newId();
+        int subTaskId = ++id; //this.newId();
         subTask.setId(subTaskId);
         subTasks.put(subTaskId, subTask);
         int epicIdOfSubTask = subTask.getEpicId();
@@ -127,47 +128,32 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void updateTask(Task task) {
-        int idUpdTask = -1;
-        for (Map.Entry<Integer, Task> entry : tasks.entrySet()) {
-            if (Objects.equals(entry.getValue().getName(), task.getName()))
-                idUpdTask = entry.getValue().getId();
-        }
-        if (idUpdTask >= 0) {
-            task.setId(idUpdTask);
-            tasks.put(idUpdTask, task);
+        if (tasks.containsKey(task.getId())) {
+            tasks.put(task.getId(), task);
+        } else {
+            System.out.println("Tasks.Task not found");
         }
     }
 
     @Override
     public void updateEpic(Epic epic) {
-        int idUpdEpic = -1;
-        for (Map.Entry<Integer, Epic> entry : epics.entrySet()) {
-            if (Objects.equals(entry.getValue().getName(), epic.getName()))
-                idUpdEpic = entry.getValue().getId();
-        }
-        if (idUpdEpic >= 0) {
-            epic.setId(idUpdEpic);
-            for (int i = 0; i < epics.get(idUpdEpic).getSubTaskIDs().size(); i++) {
-                SubTask subTask = subTasks.get(epics.get(idUpdEpic).getSubTaskIDs().get(i));
-                epic.addSubTaskID(subTask);
-            }
-            epics.put(idUpdEpic, epic);
+        if (epics.containsKey(epic.getId())) {
+            epics.put(epic.getId(), epic);
+            setEpicStatus(epic);
+        } else {
+            System.out.println("Tasks.Epic not found");
         }
     }
 
     @Override
-    public void updateSubtask(SubTask subTask) {
-        int idUpdSubtask = -1;
-        for (Map.Entry<Integer, SubTask> entry : subTasks.entrySet()) {
-            if (Objects.equals(entry.getValue().getName(), subTask.getName()))
-                idUpdSubtask = entry.getValue().getId();
+    public void updateSubtask(SubTask subtask) {
+        if (subTasks.containsKey(subtask.getId())) {
+            subTasks.put(subtask.getId(), subtask);
+            Epic epic = epics.get(subtask.getEpicId());
+            setEpicStatus(epic);
+        } else {
+            System.out.println("Tasks.Subtask not found");
         }
-        if (idUpdSubtask >= 0) {
-            subTask.setId(idUpdSubtask);
-            subTasks.put(idUpdSubtask, subTask);
-            this.setEpicStatus(epics.get(subTask.getEpicId()));
-        }
-
     }
 
     @Override
@@ -192,7 +178,7 @@ public class InMemoryTaskManager implements TaskManager {
 
 
     private void setEpicStatus(Epic epic) {
-         Status oldTaskStatus = epic.getStatus();
+        Status oldTaskStatus = epic.getStatus();
         ArrayList<SubTask> subTasksUpd = new ArrayList<>();
         for (int i = 0; i < epic.getSubTaskIDs().size(); i++) {
             subTasksUpd.add(subTasks.get(epic.getSubTaskIDs().get(i)));
@@ -214,21 +200,20 @@ public class InMemoryTaskManager implements TaskManager {
         }
 
         if (subTasksUpd.size() == 0) {
-            epic.setStatus( Status.NEW);
+            epic.setStatus(Status.NEW);
         } else if (counterDone == subTasksUpd.size()) {
-            epic.setStatus( Status.DONE);
+            epic.setStatus(Status.DONE);
         } else if (counterNew == subTasksUpd.size()) {
             epic.setStatus(oldTaskStatus);
         } else {
-            epic.setStatus( Status.IN_PROGRESS);
+            epic.setStatus(Status.IN_PROGRESS);
         }
     }
 
 
-
-    private int newId() {
-        return ++i;
-    }
+    /*private int newId() {
+        return ++id;
+    }*/
 
 
 }

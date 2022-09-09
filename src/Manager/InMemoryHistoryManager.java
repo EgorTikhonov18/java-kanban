@@ -12,12 +12,11 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void add(Task task) {
-
-        if (listHistory.size() == LIST_SIZE) {
-            listHistory.remove(0);
-        }
         if (task != null) {
             listHistory.add(task);
+        }
+        if (listHistory.size() == LIST_SIZE) {
+            listHistory.remove(0);
         }
     }
 
