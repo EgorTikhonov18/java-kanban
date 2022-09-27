@@ -83,7 +83,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<SubTask> getSubTask(int epicId) {
+    public List<SubTask> getSubTask(int epicId) {
         Epic epic = epics.get(epicId);
         ArrayList<SubTask> subTaskArrayList = new ArrayList<>();
         List<Integer> subtasksFromEpic = epic.getSubTaskIDs();
@@ -159,11 +159,13 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTaskById(int taskId) {
         tasks.remove(taskId);
+      //  historyManager.remove(taskId);
     }
 
     @Override
     public void deleteEpicById(int epicId) {
         epics.remove(epicId);
+       // historyManager.remove(epicId);
 
         ArrayList<Integer> idDelSubtasks = new ArrayList<>();
         for (Map.Entry<Integer, SubTask> entry : subTasks.entrySet()) {
@@ -210,10 +212,6 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-
-    /*private int newId() {
-        return ++id;
-    }*/
 
 
 }
