@@ -1,22 +1,31 @@
 package Tasks;
 
 
+import Tasks.Enums.Status;
+import Tasks.Enums.TypeOfTask;
+
 import java.util.Objects;
 
 public class Task {
     protected int id;
+    protected TypeOfTask type;
     protected String name;
     protected Status status;
     protected String description;
 
-    public Task(String name, Status status, String description) {
+    public Task(String name, TypeOfTask type, Status status, String description) {
         this.name = name;
+        this.type = type;
         this.status = status;
         this.description = description;
     }
 
     public int getId() {
         return id;
+    }
+
+    public TypeOfTask getType() {
+        return type;
     }
 
     public void setId(int id) {
@@ -69,5 +78,7 @@ public class Task {
     public int hashCode() {
         return Objects.hash(id, name, status, description);
     }
+
 }
+
 

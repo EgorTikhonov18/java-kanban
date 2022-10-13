@@ -1,15 +1,15 @@
 package Tasks.sub;
 
 import Tasks.Task;
-import Tasks.Status;
-
+import Tasks.Enums.Status;
+import Tasks.Enums.TypeOfTask;
 import java.util.Objects;
 
 public class SubTask extends Task {
     private int epicId;
 
-    public SubTask(String name, Status status, String description, int epicId) {
-        super(name, status, description);
+    public SubTask(String name, TypeOfTask type, Status status, String description, int epicId) {
+        super(name, type, status, description);
         this.epicId = epicId;
     }
 

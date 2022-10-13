@@ -1,10 +1,13 @@
-package Manager;
+package Manager.inMemory;
 
 
+import Manager.Managers;
+import Manager.interfaces.HistoryManager;
+import Manager.interfaces.TaskManager;
 import Tasks.Task;
 import Tasks.sub.Epic;
 import Tasks.sub.SubTask;
-import Tasks.Status;
+import Tasks.Enums.Status;
 
 import java.util.*;
 
@@ -34,21 +37,26 @@ public class InMemoryTaskManager implements TaskManager {
         return subTasks.values();
     }
 
-    @Override
     public Task getTaskByID(int taskId) {
-        historyManager.add(tasks.get(taskId));
+        if (tasks.get(taskId) != null) {
+            historyManager.add(tasks.get(taskId));
+        }
         return tasks.get(taskId);
     }
 
     @Override
     public Epic getEpicByID(int epicId) {
-        historyManager.add(epics.get(epicId));
+        if (epics.get(epicId) != null) {
+            historyManager.add(epics.get(epicId));
+        }
         return epics.get(epicId);
     }
 
     @Override
     public SubTask getSubtaskByID(int subtaskId) {
-        historyManager.add(subTasks.get(subtaskId));
+        if (subTasks.get(subtaskId) != null) {
+            historyManager.add(subTasks.get(subtaskId));
+        }
         return subTasks.get(subtaskId);
     }
 
@@ -212,6 +220,8 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-
+    protected HistoryManager getHistoryManager() {
+        return historyManager;
+    }
 
 }

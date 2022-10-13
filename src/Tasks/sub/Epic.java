@@ -1,7 +1,8 @@
 package Tasks.sub;
 
+import Tasks.Enums.Status;
+import Tasks.Enums.TypeOfTask;
 import Tasks.Task;
-import Tasks.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.Objects;
 public class Epic extends Task {
     private final List<Integer> subTaskIDs = new ArrayList<>();
 
-    public Epic(String name, Status status, String description) {
-        super(name, status, description);
+    public Epic(String name, TypeOfTask type, Status status, String description) {
+        super(name, type, status, description);
     }
 
     public void addSubTaskID(SubTask subTask) {
