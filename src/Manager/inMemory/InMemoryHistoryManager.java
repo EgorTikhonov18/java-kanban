@@ -1,37 +1,19 @@
 package Manager.inMemory;
 
-
-
 import Manager.interfaces.HistoryManager;
 import Tasks.Task;
 
-
-
 import java.util.HashMap;
-
 import java.util.Map;
-
 import java.util.ArrayList;
 
 import java.util.List;
 
-
-
 public class InMemoryHistoryManager implements HistoryManager {
-
-
-
     private List<Task> listHistory = new ArrayList<>();
-
     private final Map<Integer, Node> customLinkedList = new HashMap<>();
-
-
-
     private Node firstNode;
-
     private Node lastNode;
-
-
 
     private static class Node {
 
@@ -40,8 +22,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         private Node next;
 
         private Task value;
-
-
 
         public Node(Node previous, Task value, Node next) {
 
@@ -54,9 +34,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
 
 
-
     }
-
 
 
     public Node setLast(Task task) { // данный метод добавляет задачу в конец списка
@@ -82,9 +60,7 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
 
-
     public void removeNode(Node value) {
-
 
 
         if (value == firstNode) {
@@ -100,7 +76,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
 
 
-
         if (value == lastNode) {
 
             if (lastNode.previous != null)
@@ -112,7 +87,6 @@ public class InMemoryHistoryManager implements HistoryManager {
                 lastNode = null;
 
         }
-
 
 
         if (value.previous != null) {
@@ -128,7 +102,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
 
     }
-
 
 
     public List<Task> getTasks() {  // берет задчи из списка в arraylist
@@ -150,7 +123,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
 
-
     @Override
 
     public void add(Task task) {
@@ -170,7 +142,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
 
-
     public void remove(int id) { //реализовал
 
         if (customLinkedList.containsKey(id)) {
@@ -182,7 +153,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
 
     }
-
 
 
     @Override
