@@ -22,14 +22,10 @@ import java.util.List;
 public class FileBackedTasksManager extends InMemoryTaskManager implements TaskManager {
 
         public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
-
             File fileForExample = new File("src/Manager/inFile/savedNotes2.csv");
             FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager(fileForExample);
             fileBackedTasksManager.createTask(new Task("Таск 1", TypeOfTask.TASK, Status.DONE, "Доделать тз"));
-
             fileBackedTasksManager.createTask(new Task("Таск 2", TypeOfTask.TASK, Status.DONE, "попытаться сдать тз"));
-
-
             fileBackedTasksManager.getTaskByID(1);
             fileBackedTasksManager.getTaskByID(2);
             fileBackedTasksManager.createTask(new Task("Таск 3", TypeOfTask.TASK, Status.NEW, " Посмотреть футбол"));
