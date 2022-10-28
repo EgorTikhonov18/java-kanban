@@ -1,13 +1,13 @@
 package manager.inMemory;
 
 
-import Tasks.Epic;
-import Tasks.Subtask;
-import Tasks.Task;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import enums.Status;
 import manager.Exception.ManagerValidateException;
-import manager.interfaces.HistoryManager;
-import manager.interfaces.TaskManager;
+import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.HistoryAndTaskManagerInterfaces.TaskManager;
 
 import java.time.Instant;
 import java.util.*;

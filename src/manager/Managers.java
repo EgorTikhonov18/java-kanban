@@ -3,8 +3,8 @@ package manager;
 
 import manager.inMemory.InMemoryHistoryManager;
 import manager.inMemory.InMemoryTaskManager;
-import manager.interfaces.HistoryManager;
-import manager.interfaces.TaskManager;
+import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.HistoryAndTaskManagerInterfaces.TaskManager;
 
 public class Managers {
     public static TaskManager getInMemoryTaskManager(HistoryManager historyManager) {

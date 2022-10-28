@@ -1,8 +1,8 @@
 package manager.inMemory;
 
 
-import Tasks.Task;
-import manager.interfaces.HistoryManager;
+import tasks.Task;
+import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
 
 import java.util.*;
 

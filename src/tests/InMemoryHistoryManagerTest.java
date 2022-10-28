@@ -1,9 +1,9 @@
 package tests;
 
-import Tasks.Task;
+import tasks.Task;
 import enums.Status;
 import manager.inMemory.InMemoryHistoryManager;
-import manager.interfaces.HistoryManager;
+import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

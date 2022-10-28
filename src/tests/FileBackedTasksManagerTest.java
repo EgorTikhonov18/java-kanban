@@ -1,8 +1,8 @@
 package tests;
 
 
-import Tasks.Epic;
-import Tasks.Task;
+import tasks.Epic;
+import tasks.Task;
 import enums.Status;
 import manager.Managers;
 import manager.file.FileBackedTasksManager;

@@ -1,7 +1,7 @@
-package manager.interfaces;
+package manager.HistoryAndTaskManagerInterfaces;
 
 
-import Tasks.Task;
+import tasks.Task;
 
 import java.util.List;
 

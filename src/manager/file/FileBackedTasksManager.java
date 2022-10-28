@@ -3,12 +3,12 @@ package manager.file;
 
 import enums.TaskType;
 import enums.Status;
-import Tasks.Epic;
-import Tasks.Subtask;
-import Tasks.Task;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import manager.Exception.ManagerSaveException;
 import manager.inMemory.InMemoryTaskManager;
-import manager.interfaces.HistoryManager;
+import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
