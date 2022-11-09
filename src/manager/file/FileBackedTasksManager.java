@@ -253,7 +253,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     }
 
     // Метод для сохранения истории в CSV
-    static String historyToString(HistoryManager manager) {
+    protected static String historyToString(HistoryManager manager) {
         List<Task> history = manager.getHistory();
         StringBuilder str = new StringBuilder();
 

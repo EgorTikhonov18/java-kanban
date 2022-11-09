@@ -11,7 +11,7 @@ public class Task {
     private int id;
     private String name;
     private Status status;
-    private Instant startTime;
+    private transient Instant startTime;
     private long duration;
 
     public Task(String description, String name, Status status) {
@@ -109,4 +109,3 @@ public class Task {
         return Objects.hash(description, id, name, status, startTime, duration);
     }
 }
-

@@ -1,4 +1,4 @@
-package tests;
+package tests.manager;
 
 
 import tasks.Epic;
@@ -16,16 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class TaskManagerTest<T extends TaskManager> {
     protected T manager;
-
     protected Task createTask() {
         return new Task("Description", "Title", Status.NEW, Instant.now(), 0);
     }
-
     protected Epic createEpic() {
 
         return new Epic("Description", "Title", Status.NEW, Instant.now(), 0);
     }
-
     protected Subtask createSubtask(Epic epic) {
         return new Subtask("Description", "Title", Status.NEW, epic.getId(), Instant.now(), 0);
     }

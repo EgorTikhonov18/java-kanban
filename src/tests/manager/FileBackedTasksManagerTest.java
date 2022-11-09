@@ -1,4 +1,4 @@
-package tests;
+package tests.manager;
 
 
 import tasks.Epic;
