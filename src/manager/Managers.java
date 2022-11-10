@@ -3,8 +3,8 @@ package manager;
 
 import http.HTTPTaskManager;
 import http.KVServer;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 import manager.inMemory.InMemoryHistoryManager;
 import manager.inMemory.InMemoryTaskManager;
 

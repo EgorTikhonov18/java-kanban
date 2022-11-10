@@ -5,7 +5,7 @@ import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
 import enums.Status;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

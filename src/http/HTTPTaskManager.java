@@ -1,9 +1,8 @@
 package http;
 
-
-import adapters.InstantAdapter;
+import adapter.InstantAdapter;
 import com.google.gson.*;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
 import manager.file.FileBackedTasksManager;
 import tasks.Epic;
 import tasks.Subtask;

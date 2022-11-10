@@ -3,7 +3,7 @@ package tests.manager;
 import tasks.Task;
 import enums.Status;
 import manager.inMemory.InMemoryHistoryManager;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

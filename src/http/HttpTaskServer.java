@@ -3,9 +3,9 @@ package http;
 
 import com.sun.net.httpserver.HttpServer;
 import http.handlers.*;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 import manager.Managers;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

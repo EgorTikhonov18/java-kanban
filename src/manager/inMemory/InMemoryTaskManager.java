@@ -2,9 +2,9 @@ package manager.inMemory;
 
 
 import enums.Status;
-import manager.Exception.ManagerValidateException;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
+import manager.exception.ManagerValidateException;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;

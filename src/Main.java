@@ -1,9 +1,9 @@
-import adapters.InstantAdapter;
+import adapter.InstantAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
 import manager.Managers;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 import http.KVServer;
 import enums.Status;
 import tasks.Epic;

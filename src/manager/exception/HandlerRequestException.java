@@ -1,4 +1,4 @@
-package manager.Exception;
+package manager.exception;
 
 public class HandlerRequestException extends RuntimeException {
 

@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
+//import static java.nio.charset.StandardCharsets.UTF_8;
 
 
 public class KVServer {
-    public static final int PORT = 8080;
+    public static final int PORT = 8078;
     private final String apiToken;
     private final HttpServer server;
     private final Map<String, String> data = new HashMap<>();
@@ -125,11 +124,11 @@ public class KVServer {
     }
 
     protected String readText(HttpExchange httpExchange) throws IOException {
-        return new String(httpExchange.getRequestBody().readAllBytes(), UTF_8);
+        return new String(httpExchange.getRequestBody().readAllBytes());
     }
 
     protected void sendText(HttpExchange httpExchange, String text) throws IOException {
-        byte[] resp = text.getBytes(UTF_8);
+        byte[] resp = text.getBytes();
         httpExchange.getResponseHeaders().add("Content-Type", "application/json");
         httpExchange.sendResponseHeaders(200, resp.length);
         httpExchange.getResponseBody().write(resp);

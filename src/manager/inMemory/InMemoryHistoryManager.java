@@ -1,10 +1,13 @@
 package manager.inMemory;
 
 
+import manager.historyAndTaskManagerInterfaces.HistoryManager;
 import tasks.Task;
-import manager.HistoryAndTaskManagerInterfaces.HistoryManager;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private static class CustomLinkedList {
@@ -91,36 +94,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     @Override
     public List<Task> getHistory() {
         return list.getTasks();
-    }
-}
-
-class Node {
-    private Task task;
-    private Node prev;
-    private Node next;
-
-    public Node getNext() {
-        return next;
-    }
-
-    public Node getPrev() {
-        return prev;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public void setPrev(Node prev) {
-        this.prev = prev;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
     }
 }
 

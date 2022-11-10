@@ -1,12 +1,12 @@
 package http.handlers;
 
 
-import adapters.InstantAdapter;
+import adapter.InstantAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import manager.HistoryAndTaskManagerInterfaces.TaskManager;
+import manager.historyAndTaskManagerInterfaces.TaskManager;
 
 import java.io.IOException;
 import java.io.OutputStream;

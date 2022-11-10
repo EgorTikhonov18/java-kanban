@@ -1,4 +1,4 @@
-package manager.HistoryAndTaskManagerInterfaces;
+package manager.historyAndTaskManagerInterfaces;
 
 
 import tasks.Epic;
